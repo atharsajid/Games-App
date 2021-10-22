@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 Color primarycolor = Colors.white;
-Color focuscolor = Colors.black87;
+Color focuscolor = const Color(0xff1B0321);
+Color btncolor = const Color(0xff17C7EB);
+Color menubtn = Colors.white;
 
 List<BoxShadow> shadowlist = [
   BoxShadow(
@@ -32,7 +34,37 @@ const labeltext = TextStyle(
   fontSize: 14,
 );
 
-const cattext =
-    TextStyle(color: Colors.white, fontSize: 14,
-    
-    );
+final catext = TextStyle(
+  color: primarycolor,
+  fontSize: 14,
+);
+
+List<Map> gamedata = [
+  {'name': 'Fortnite', 'img': 'images/fortnit.png', 'category': 'Shooting'},
+  {'name': 'PUBG', 'img': 'images/pub.png', 'category': 'Battleground'},
+  {
+    'name': 'The Witch',
+    'img': 'images/TheWitch.png',
+    'category': 'RolePlaying'
+  },
+  {
+    'name': 'Street Fighter',
+    'img': 'images/street.png',
+    'category': 'Fighting'
+  },
+  {
+    'name': 'Call of Duty',
+    'img': 'images/callofduty.png',
+    'category': 'Shooting'
+  },
+  {
+    'name': 'Grand Theft Auto V',
+    'img': 'images/gtav.png',
+    'category': 'Open World'
+  },
+  {
+    'name': 'Final Fantasy',
+    'img': 'images/girl.png',
+    'category': 'RolePlaying'
+  },
+];

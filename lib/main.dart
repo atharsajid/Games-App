@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Stack(
-          children: [
+          children:const [
             DrawerScreen(),
             HomeScreen(),
           ],
