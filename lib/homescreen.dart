@@ -16,8 +16,9 @@ class _OnHomeScreenState extends State<OnHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeScreen(),
-      routes: {Gameinside.routename: (_) => GameScreen()},
+      debugShowCheckedModeBanner: false,
+      home: const HomeScreen(),
+      routes: {Gameinside.routename: (_) => const GameScreen()},
     );
   }
 }
@@ -48,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
         height: 805,
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("images/2.jpg"),
+                image: const AssetImage("images/2.jpg"),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
                     Colors.black.withOpacity(0.7), BlendMode.darken)),
