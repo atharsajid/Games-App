@@ -58,7 +58,7 @@ Widget game(
                     const SizedBox(
                       height: 10,
                     ),
-                    playbtn(),
+                    OnelevateBtn(),
                   ],
                 ),
               ),
@@ -86,25 +86,23 @@ final cattext = TextStyle(
 );
 
 Widget playbtn() {
-  return OnHoverAnimation(
-    child: OutlinedButton(
-        style: OutlinedButton.styleFrom(
-            minimumSize: const Size(150, 40),
-            backgroundColor: btncolor,
-            side: BorderSide(color: btncolor, width: 0),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18),
-            )),
-        onPressed: () {},
-        child: Text(
-          "Play",
-          style: TextStyle(
-            color: primarycolor,
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
-        )),
-  );
+  return OutlinedButton(
+      style: OutlinedButton.styleFrom(
+          minimumSize: const Size(150, 40),
+          backgroundColor: btncolor,
+          side: BorderSide(color: btncolor, width: 0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18),
+          )),
+      onPressed: () {},
+      child: Text(
+        "Play",
+        style: TextStyle(
+          color: primarycolor,
+          fontSize: 22,
+          fontWeight: FontWeight.bold,
+        ),
+      ));
 }
 
 profile(String username, String img) {
@@ -190,18 +188,16 @@ Widget coming() {
 }
 
 Widget fav() {
-  return OnHoverAnimation(
-    child: TextButton.icon(
-        onPressed: () {},
-        icon: Icon(
-          Icons.favorite,
-          color: menubtn,
-        ),
-        label: Text(
-          "Favorite",
-          style: menutext,
-        )),
-  );
+  return TextButton.icon(
+      onPressed: () {},
+      icon: Icon(
+        Icons.favorite,
+        color: menubtn,
+      ),
+      label: Text(
+        "Favorite",
+        style: menutext,
+      ));
 }
 
 Widget setting() {
@@ -217,7 +213,9 @@ Widget setting() {
 
 Widget logout() {
   return IconButton(
-    onPressed: () {},
+    onPressed: () {
+      Colors.amber;
+    },
     icon: Icon(
       Icons.logout,
       color: menubtn,
@@ -226,39 +224,45 @@ Widget logout() {
   );
 }
 
-class OnHoverAnimation extends StatefulWidget {
-  final Widget child;
-  const OnHoverAnimation({Key? key, required this.child}) : super(key: key);
+class OnelevateBtn extends StatefulWidget {
+  const OnelevateBtn({Key? key}) : super(key: key);
 
   @override
-  _OnHoverAnimationState createState() => _OnHoverAnimationState();
+  _OnelevateBtnState createState() => _OnelevateBtnState();
 }
 
-class _OnHoverAnimationState extends State<OnHoverAnimation> {
-  bool isHovered = false;
+class _OnelevateBtnState extends State<OnelevateBtn> {
   @override
   Widget build(BuildContext context) {
-    final hoveredtrans = Matrix4.identity()..scale(1.3);
-    final transform = Matrix4.identity();
-    return MouseRegion(
-      onEnter: (f) {
-        setState(() {
-          isHovered = true;
-        });
-      },
-      onExit: (f) {
-        setState(() {
-          isHovered = false;
-        });
-      },
-      child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          transform: isHovered?hoveredtrans:transform,
-          child: widget.child),
+    return Column(
+      children: [
+        ElevatedButton.icon(
+          style: ButtonStyle(
+            backgroundColor: getcolor(Colors.transparent, btncolor),
+            foregroundColor: getcolor(btncolor, primarycolor),
+          ),
+          onPressed: () {},
+          label: const Text(
+            "Play",
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          icon: const Icon(Icons.gamepad),
+        ),
+      ],
     );
   }
 
-  // onEntered(bool isHovered) => setState(() {
-  //       isHovered = isHovered;
-  //     });
+  MaterialStateProperty<Color> getcolor(Color color, Color color2) {
+    final getcolor = (Set<MaterialState> states) {
+      if (states.contains(MaterialState.pressed)) {
+        return color2;
+      } else {
+        return color;
+      }
+    };
+    return MaterialStateProperty.resolveWith(getcolor);
+  }
 }

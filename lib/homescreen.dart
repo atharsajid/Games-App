@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hidden_drawer/configration.dart';
+import 'package:hidden_drawer/gameinside.dart';
 import 'package:hidden_drawer/widget.dart';
+
+class OnHomeScreen extends StatefulWidget {
+  static const routename = "home screen";
+  const OnHomeScreen({Key? key}) : super(key: key);
+
+  @override
+  _OnHomeScreenState createState() => _OnHomeScreenState();
+}
+
+class _OnHomeScreenState extends State<OnHomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: HomeScreen(),
+      routes: {Gameinside.routename: (_) => GameScreen()},
+    );
+  }
+}
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -28,10 +47,12 @@ class _HomeScreenState extends State<HomeScreen> {
       child: AnimatedContainer(
         height: 805,
         decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage("images/2.jpg"),fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.7), BlendMode.darken)
-          ),
-             borderRadius: BorderRadius.circular(radi)),
+            image: DecorationImage(
+                image: AssetImage("images/2.jpg"),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.7), BlendMode.darken)),
+            borderRadius: BorderRadius.circular(radi)),
         transform: Matrix4.translationValues(xoffset, yoffset, 0)
           ..scale(scalefactor),
         duration: const Duration(milliseconds: 250),
@@ -133,7 +154,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                        
                           margin: const EdgeInsets.only(left: 20),
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
@@ -144,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             categories[index]['iconPath'],
                             width: 50,
                             height: 50,
-                            color: focuscolor, 
+                            color: focuscolor,
                           ),
                         ),
                         Container(
@@ -157,20 +177,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   }),
             ),
-            Container(
-              height: 465,
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: gamedata.length,
-                  clipBehavior: Clip.hardEdge,
-                  itemBuilder: (context, index) {
-                    return game(
-                      gamedata[index]['img'],
-                      gamedata[index]['name'],
-                      gamedata[index]['category'],
-                    );
-                  }),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(Gameinside.routename);
+              },
+              child: Container(
+                height: 465,
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: gamedata.length,
+                    clipBehavior: Clip.hardEdge,
+                    itemBuilder: (context, index) {
+                      return game(
+                        gamedata[index]['img'],
+                        gamedata[index]['name'],
+                        gamedata[index]['category'],
+                      );
+                    }),
+              ),
             ),
           ],
         ),

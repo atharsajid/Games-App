@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Color primarycolor = Colors.white;
 Color focuscolor = const Color(0xff1B0321);
-Color btncolor = const Color(0xff17C7EB);
+Color btncolor = Colors.amber;
 Color menubtn = Colors.white;
 
 List<BoxShadow> shadowlist = [
