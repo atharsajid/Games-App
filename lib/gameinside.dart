@@ -31,152 +31,155 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned.fill(
-          child: Column(
-            children: [
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: const AssetImage("images/2.jpg"),
-                        fit: BoxFit.cover,
-                        colorFilter: ColorFilter.mode(
-                            Colors.black.withOpacity(0.6), BlendMode.darken)),
+    return Scaffold(
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: const AssetImage("images/2.jpg"),
+                          fit: BoxFit.cover,
+                          colorFilter: ColorFilter.mode(
+                              Colors.black.withOpacity(0.6), BlendMode.darken)),
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Container(
-                  color: primarycolor,
-                ),
-              )
-            ],
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 65),
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Align(
-            alignment: Alignment.topCenter,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(
-                      Icons.arrow_back_ios,
-                      color: primarycolor,
-                    )),
-                Icon(
-                  Icons.share,
-                  color: primarycolor,
-                ),
+                Expanded(
+                  child: Container(
+                    color: primarycolor,
+                  ),
+                )
               ],
             ),
           ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 80),
-          child: Align(
-            alignment: Alignment.topCenter,
-            child: Image.asset(
-              "images/fortnit.png",
-              height: 400,
-            ),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 15),
-          child: Align(
-            alignment: Alignment.center,
-            child: Container(
-              height: 130,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: primarycolor,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black.withOpacity(0.4),
-                        blurRadius: 15,
-                        spreadRadius: 7)
-                  ]),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
+          Container(
+            margin: const EdgeInsets.only(top: 65),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "FORTNITE",
-                    style: namtxt,
-                  ),
-                  Text(
-                    "Online BattleGround Game",
-                    style: onlinetxt,
-                  ),
-                  SizedBox(
-                    height: 30,
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        color: primarycolor,
+                      )),
+                  Icon(
+                    Icons.share,
+                    color: primarycolor,
                   ),
                 ],
               ),
             ),
           ),
-        ),
-        Container(
-          padding: EdgeInsets.all(30),
-          margin: EdgeInsets.only(top: 300),
-          child: Align(
-            alignment: Alignment.center,
+          Container(
+            margin: const EdgeInsets.only(top: 80),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Image.asset(
+                "images/fortnit.png",
+                height: 400,
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 15),
+            child: Align(
+              alignment: Alignment.center,
+              child: Container(
+                height: 130,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: primarycolor,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black.withOpacity(0.4),
+                          blurRadius: 15,
+                          spreadRadius: 7)
+                    ]),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "FORTNITE",
+                      style: namtxt,
+                    ),
+                    Text(
+                      "Online BattleGround Game",
+                      style: onlinetxt,
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(30),
+            margin: EdgeInsets.only(top: 300),
+            child: Align(
+              alignment: Alignment.center,
+              child: Container(
+                  child: Text(
+                abc,
+                textAlign: TextAlign.justify,
+                style: textst,
+              )),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
             child: Container(
-                child: Text(
-              abc,
-              textAlign: TextAlign.justify,
-              style: textst,
-            )),
-          ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20), topRight: Radius.circular(25)),
-              color: Colors.grey[200],
-            ),
-            width: double.infinity,
-            height: 120,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                FloatingActionButton(
-                  onPressed: () {},
-                  child: const Icon(Icons.favorite),
-                  backgroundColor: Colors.amber,
-                  foregroundColor: primarycolor,
-                ),
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(200, 80),
-                    primary: btncolor,
-                    onPrimary: primarycolor,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(25)),
+                color: Colors.grey[200],
+              ),
+              width: double.infinity,
+              height: 120,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  FloatingActionButton(
+                    onPressed: () {},
+                    child: const Icon(Icons.favorite),
+                    backgroundColor: Colors.amber,
+                    foregroundColor: primarycolor,
                   ),
-                  onPressed: () {},
-                  icon: Icon(Icons.gamepad),
-                  label: Text(
-                    "Play",
-                    style: bttxt,
+                  ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(200, 80),
+                      primary: btncolor,
+                      onPrimary: primarycolor,
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                    ),
+                    onPressed: () {},
+                    icon: Icon(Icons.gamepad),
+                    label: Text(
+                      "Play",
+                      style: bttxt,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }

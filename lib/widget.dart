@@ -58,7 +58,7 @@ Widget game(
                     const SizedBox(
                       height: 10,
                     ),
-                    const OnelevateBtn(),
+                   elevatedbtn(),
                   ],
                 ),
               ),
@@ -224,45 +224,18 @@ Widget logout() {
   );
 }
 
-class OnelevateBtn extends StatefulWidget {
-  const OnelevateBtn({Key? key}) : super(key: key);
-
-  @override
-  _OnelevateBtnState createState() => _OnelevateBtnState();
-}
-
-class _OnelevateBtnState extends State<OnelevateBtn> {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ElevatedButton.icon(
-          style: ButtonStyle(
-            backgroundColor: getcolor(Colors.transparent, btncolor),
-            foregroundColor: getcolor(btncolor, primarycolor),
-          ),
-          onPressed: () {},
-          label: const Text(
-            "Play",
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          icon: const Icon(Icons.gamepad),
-        ),
-      ],
-    );
-  }
-
-  MaterialStateProperty<Color> getcolor(Color color, Color color2) {
-    final getcolor = (Set<MaterialState> states) {
-      if (states.contains(MaterialState.pressed)) {
-        return color2;
-      } else {
-        return color;
-      }
-    };
-    return MaterialStateProperty.resolveWith(getcolor);
-  }
+Widget elevatedbtn() {
+  return ElevatedButton.icon(
+    style: ElevatedButton.styleFrom(
+        primary: Colors.transparent, onPrimary: btncolor),
+    onPressed: () {},
+    label: const Text(
+      "Play",
+      style: TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    icon: const Icon(Icons.gamepad),
+  );
 }
